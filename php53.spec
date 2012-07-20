@@ -6,7 +6,7 @@
 # Extension version
 %global fileinfover 1.0.5-dev
 %global pharver     2.0.1
-%global zipver      1.9.1
+%global zipver      1.11.0
 %global jsonver     1.2.1
 
 %global httpd_mmn %(cat %{_includedir}/httpd/.mmn || echo missing-httpd-devel)
@@ -36,7 +36,7 @@
 
 Summary: PHP scripting language for creating dynamic web sites
 Name: php
-Version: 5.3.14
+Version: 5.3.15
 Release: 1%{?dist}
 License: PHP
 Group: Development/Languages
@@ -1114,6 +1114,9 @@ fi
 %endif
 
 %changelog
+* Fri Jul 20 2012 Andy Thompson <andy@webtatic.com> 5.3.15-1
+- update to 5.3.15
+
 * Thu Jun 14 2012 Andy Thompson <andy@webtatic.com> 5.3.14-1
 - update to 5.3.14
 
