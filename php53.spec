@@ -36,8 +36,8 @@
 
 Summary: PHP scripting language for creating dynamic web sites
 Name: php
-Version: 5.3.18
-Release: 2%{?dist}
+Version: 5.3.19
+Release: 1%{?dist}
 License: PHP
 Group: Development/Languages
 URL: http://www.php.net/
@@ -1114,8 +1114,9 @@ fi
 %endif
 
 %changelog
-* Wed Nov 07 2012 Andy Thompson <andy@webtatic.com> 5.3.18-2
+* Sun Nov 25 2012 Andy Thompson <andy@webtatic.com> 5.3.19-1
 - switch php-fpm default user/group to nobody
+- update to 5.3.19
 
 * Thu Oct 18 2012 Andy Thompson <andy@webtatic.com> 5.3.18-1
 - update to 5.3.18
