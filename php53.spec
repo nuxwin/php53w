@@ -36,7 +36,7 @@
 
 Summary: PHP scripting language for creating dynamic web sites
 Name: php
-Version: 5.3.19
+Version: 5.3.20
 Release: 1%{?dist}
 License: PHP
 Group: Development/Languages
@@ -1114,6 +1114,9 @@ fi
 %endif
 
 %changelog
+* Thu Dec 20 2012 Andy Thompson <andy@webtatic.com> 5.3.20-1
+- update to 5.3.20
+
 * Sun Nov 25 2012 Andy Thompson <andy@webtatic.com> 5.3.19-1
 - switch php-fpm default user/group to nobody
 - update to 5.3.19
