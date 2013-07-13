@@ -37,7 +37,7 @@
 Summary: PHP scripting language for creating dynamic web sites
 Name: php
 Version: 5.3.27
-Release: 1%{?dist}
+Release: 2%{?dist}
 License: PHP
 Group: Development/Languages
 URL: http://www.php.net/
@@ -289,7 +289,7 @@ Provides: php_database
 Provides: php-mysqli, php-mysqli%{?_isa}
 Provides: php-pdo_mysql, php-pdo_mysql%{?_isa}
 Obsoletes: mod_php3-mysql, stronghold-php-mysql
-BuildRequires: mysql-devel >= 4.1.0
+BuildRequires: mysql-devel < 5.1
 
 %description mysql
 The php-mysql package contains a dynamic shared object that will add
@@ -1114,6 +1114,9 @@ fi
 %endif
 
 %changelog
+* Sat Jul 13 2013 Andy Thompson <andy@webtatic.com> 5.3.27-2
+- Rebuild with mysql-devel limited to 5.0.x
+
 * Sat Jul 13 2013 Andy Thompson <andy@webtatic.com> 5.3.27-1
 - update to 5.3.27
 
