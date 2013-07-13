@@ -36,7 +36,7 @@
 
 Summary: PHP scripting language for creating dynamic web sites
 Name: php
-Version: 5.3.26
+Version: 5.3.27
 Release: 1%{?dist}
 License: PHP
 Group: Development/Languages
@@ -1114,6 +1114,9 @@ fi
 %endif
 
 %changelog
+* Sat Jul 13 2013 Andy Thompson <andy@webtatic.com> 5.3.27-1
+- update to 5.3.27
+
 * Sun Jun 09 2013 Andy Thompson <andy@webtatic.com> 5.3.26-1
 - update to 5.3.26
 
