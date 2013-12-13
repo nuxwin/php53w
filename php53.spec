@@ -62,6 +62,8 @@ Patch7: php-5.3.0-recode.patch
 # from http://svn.php.net/viewvc?view=revision&revision=311042
 # and  http://svn.php.net/viewvc?view=revision&revision=311908
 Patch8: php-5.3.9-aconf259.patch
+# Bug 64503
+Patch9: php-5.3.28-zendparse.patch
 
 # Fixes for extension modules
 Patch20: php-4.3.11-shutdown.patch
@@ -561,6 +563,7 @@ support for using the enchant library to PHP.
 %if 0%{?fedora} >= 13
 %patch8 -p1 -b .aconf259
 %endif
+%patch9 -p1 -b .zendparse
 
 %patch20 -p1 -b .shutdown
 %patch21 -p1 -b .macropen
@@ -1116,6 +1119,7 @@ fi
 %changelog
 * Fri Dec 13 2013 Andy Thompson <andy@webtatic.com> 5.3.28-1
 - update to 5.3.28
+- backport fix for #64503 zend parse compilation error
 
 * Sat Jul 13 2013 Andy Thompson <andy@webtatic.com> 5.3.27-1
 - update to 5.3.27
