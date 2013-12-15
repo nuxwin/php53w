@@ -37,7 +37,7 @@
 Summary: PHP scripting language for creating dynamic web sites
 Name: php
 Version: 5.3.28
-Release: 1%{?dist}
+Release: 2%{?dist}
 License: PHP
 Group: Development/Languages
 URL: http://www.php.net/
@@ -291,7 +291,11 @@ Provides: php_database
 Provides: php-mysqli, php-mysqli%{?_isa}
 Provides: php-pdo_mysql, php-pdo_mysql%{?_isa}
 Obsoletes: mod_php3-mysql, stronghold-php-mysql
-BuildRequires: mysql-devel >= 4.1.0
+%if 0%{?fedora} >= 11 || 0%{?rhel} >= 6
+BuildRequires: mysql-devel < 5.2
+%else
+BuildRequires: mysql-devel < 5.1
+%endif
 
 %description mysql
 The php-mysql package contains a dynamic shared object that will add
@@ -1117,6 +1121,9 @@ fi
 %endif
 
 %changelog
+* Sun Dec 15 2013 Andy Thompson <andy@webtatic.com> 5.3.28-2
+- Force mysql extension to build against base mysql libraries
+
 * Fri Dec 13 2013 Andy Thompson <andy@webtatic.com> 5.3.28-1
 - update to 5.3.28
 - backport fix for #64503 zend parse compilation error
