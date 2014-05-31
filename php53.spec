@@ -37,7 +37,7 @@
 Summary: PHP scripting language for creating dynamic web sites
 Name: php
 Version: 5.3.28
-Release: 3%{?dist}
+Release: 4%{?dist}
 License: PHP
 Group: Development/Languages
 URL: http://www.php.net/
@@ -82,6 +82,10 @@ Patch61: php-5.0.4-tests-wddx.patch
 # Fixes for security bugs
 # Bug 67060
 Patch200: php-5.3.0-CVE-2014-0185.patch
+# Bug 67328
+Patch201: php-5.3.28-CVE-2014-0237.patch
+# Bug 67327
+Patch202: php-5.3.28-CVE-2014-0238.patch
 
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 
@@ -584,6 +588,8 @@ support for using the enchant library to PHP.
 %patch61 -p1 -b .tests-wddx
 
 %patch200 -p1 -b .cve0185
+%patch201 -p1 -b .cve0237
+%patch202 -p1 -b .cve0238
 
 # Prevent %%doc confusion over LICENSE files
 cp Zend/LICENSE Zend/ZEND_LICENSE
@@ -1127,6 +1133,10 @@ fi
 %endif
 
 %changelog
+* Sat May 31 2014 Andy Thompson <andy@webtatic.com> 5.3.28-4
+- Add security fix for CVE-2014-0237
+- Add security fix for CVE-2014-0238
+
 * Sat May 10 2014 Andy Thompson <andy@webtatic.com> 5.3.28-3
 - Add security fix for CVE-2014-0185
 - Update the php-fpm config comment to state listen.mode default is 0660
