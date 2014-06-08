@@ -86,6 +86,10 @@ Patch200: php-5.3.0-CVE-2014-0185.patch
 Patch201: php-5.3.28-CVE-2014-0237.patch
 # Bug 67327
 Patch202: php-5.3.28-CVE-2014-0238.patch
+# Bug 67326
+Patch203: php-5.3.28-CVE-2012-1571.patch
+# Bug 67390
+Patch204: php-5.3.28-CVE-2014-3981.patch
 
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 
@@ -590,6 +594,8 @@ support for using the enchant library to PHP.
 %patch200 -p1 -b .cve0185
 %patch201 -p1 -b .cve0237
 %patch202 -p1 -b .cve0238
+%patch203 -p1 -b .cve1571
+%patch204 -p1 -b .cve3981
 
 # Prevent %%doc confusion over LICENSE files
 cp Zend/LICENSE Zend/ZEND_LICENSE
@@ -1133,6 +1139,10 @@ fi
 %endif
 
 %changelog
+* Sun Jun 08 2014 Andy Thompson <andy@webtatic.com> 5.3.28-5
+- Add security fix for CVE-2012-1571
+- Add security fix for CVE-2014-3981
+
 * Sat May 31 2014 Andy Thompson <andy@webtatic.com> 5.3.28-4
 - Add security fix for CVE-2014-0237
 - Add security fix for CVE-2014-0238
