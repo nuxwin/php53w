@@ -9,6 +9,9 @@
 %global zipver      1.11.0
 %global jsonver     1.2.1
 
+# version used for php embedded library soname
+%global embed_version 5.3
+
 %global httpd_mmn %(cat %{_includedir}/httpd/.mmn || echo missing-httpd-devel)
 
 # Regression tests take a long time, you can skip 'em with this
@@ -1102,7 +1105,7 @@ fi
 %files embedded
 %defattr(-,root,root,-)
 %{_libdir}/libphp5.so
-%{_libdir}/libphp5-%{version}.so
+%{_libdir}/libphp5-%{embed_version}.so
 
 %files pgsql -f files.pgsql
 %files mysql -f files.mysql
@@ -1136,6 +1139,7 @@ fi
 * Fri Aug 01 2014 Andy Thompson <andy@webtatic.com> - 5.3.29-0.9.RC1
 - Update to PHP 5.3.29RC1
 - Remove patches for security fixes released upstream
+- Set embed_version so bugfix/rc doesn't change it
 
 * Sun Jun 08 2014 Andy Thompson <andy@webtatic.com> 5.3.28-5
 - Add security fix for CVE-2012-1571
