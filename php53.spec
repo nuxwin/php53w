@@ -34,15 +34,17 @@
 %global with_zip 1
 %global zipmod zip
 
+%global rcver RC1
+
 Summary: PHP scripting language for creating dynamic web sites
 Name: php
-Version: 5.3.28
-Release: 4%{?dist}
+Version: 5.3.29
+Release: 0.1%{?rcver:.%{rcver}}%{?dist}
 License: PHP
 Group: Development/Languages
 URL: http://www.php.net/
 
-Source0: http://www.php.net/distributions/php-%{version}.tar.bz2
+Source0: http://www.php.net/distributions/php-%{version}%{?rcver}.tar.bz2
 Source1: php.conf
 Source2: php.ini
 Source3: macros.php
@@ -568,7 +570,7 @@ support for using the enchant library to PHP.
 
 
 %prep
-%setup -q
+%setup -q -n php-%{version}%{?rcver}
 %patch1 -p1 -b .gnusrc
 %patch2 -p1 -b .install
 %patch3 -p1 -b .norpath
@@ -620,6 +622,13 @@ rm -f ext/standard/tests/file/bug22414.phpt \
       ext/iconv/tests/bug16069.phpt
 
 # Safety check for API version change.
+pver=$(sed -n '/#define PHP_VERSION /{s/.* "//;s/".*$//;p}' main/php_version.h)
+if test "x${pver}" != "x%{version}%{?rcver}"; then
+   : Error: Upstream PHP version is now ${pver}, expecting %{version}%{?rcver}.
+   : Update the version/rcver macros and rebuild.
+   exit 1
+fi
+
 vapi=`sed -n '/#define PHP_API_VERSION/{s/.* //;p}' main/php.h`
 if test "x${vapi}" != "x%{apiver}"; then
    : Error: Upstream API version is now ${vapi}, expecting %{apiver}.
@@ -1139,6 +1148,9 @@ fi
 %endif
 
 %changelog
+* Fri Aug 01 2014 Andy Thompson <andy@webtatic.com> - 5.3.29-0.9.RC1
+- Update to PHP 5.3.29RC1
+
 * Sun Jun 08 2014 Andy Thompson <andy@webtatic.com> 5.3.28-5
 - Add security fix for CVE-2012-1571
 - Add security fix for CVE-2014-3981
