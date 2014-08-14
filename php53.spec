@@ -37,12 +37,10 @@
 %global with_zip 1
 %global zipmod zip
 
-%global rcver RC1
-
 Summary: PHP scripting language for creating dynamic web sites
 Name: php
 Version: 5.3.29
-Release: 0.1%{?rcver:.%{rcver}}%{?dist}
+Release: 1%{?rcver:.%{rcver}}%{?dist}
 License: PHP
 Group: Development/Languages
 URL: http://www.php.net/
@@ -1136,8 +1134,8 @@ fi
 %endif
 
 %changelog
-* Fri Aug 01 2014 Andy Thompson <andy@webtatic.com> - 5.3.29-0.9.RC1
-- Update to PHP 5.3.29RC1
+* Thu Aug 14 2014 Andy Thompson <andy@webtatic.com> - 5.3.29-1
+- Update to PHP 5.3.29
 - Remove patches for security fixes released upstream
 - Set embed_version so bugfix/rc doesn't change it
 
