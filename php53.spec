@@ -40,7 +40,7 @@
 Summary: PHP scripting language for creating dynamic web sites
 Name: php
 Version: 5.3.29
-Release: 1%{?rcver:.%{rcver}}%{?dist}
+Release: 2%{?rcver:.%{rcver}}%{?dist}
 License: PHP
 Group: Development/Languages
 URL: http://www.php.net/
@@ -83,6 +83,11 @@ Patch43: php-5.3.4-phpize.patch
 Patch61: php-5.0.4-tests-wddx.patch
 
 # Fixes for security bugs
+Patch247: php-5.3.3-CVE-2014-2497.patch
+Patch248: php-5.3.3-CVE-2014-3587.patch
+Patch249: php-5.3.3-CVE-2014-3597.patch
+Patch250: php-5.3.3-CVE-2014-4698.patch
+Patch251: php-5.3.3-CVE-2014-4670.patch
 
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 
@@ -584,6 +589,11 @@ support for using the enchant library to PHP.
 
 %patch61 -p1 -b .tests-wddx
 
+%patch247 -p1 -b .cve2497
+%patch248 -p1 -b .cve3587
+%patch249 -p1 -b .cve3597
+%patch250 -p1 -b .cve4698
+%patch251 -p1 -b .cve4670
 
 # Prevent %%doc confusion over LICENSE files
 cp Zend/LICENSE Zend/ZEND_LICENSE
@@ -1134,6 +1144,17 @@ fi
 %endif
 
 %changelog
+* Sun Oct 12 2014 Andy Thompson <andy@webtatic.com> - 5.3.29-2
+- spl: fix use-after-free in ArrayIterator due to object
+  change during sorting. CVE-2014-4698
+- spl: fix use-after-free in SPL Iterators. CVE-2014-4670
+- gd: fix NULL pointer dereference in gdImageCreateFromXpm.
+  CVE-2014-2497
+- fileinfo: fix incomplete fix for CVE-2012-1571 in
+  cdf_read_property_info. CVE-2014-3587
+- core: fix incomplete fix for CVE-2014-4049 DNS TXT
+  record parsing. CVE-2014-3597
+
 * Thu Aug 14 2014 Andy Thompson <andy@webtatic.com> - 5.3.29-1
 - Update to PHP 5.3.29
 - Remove patches for security fixes released upstream
