@@ -85,7 +85,7 @@ Patch61: php-5.0.4-tests-wddx.patch
 # Fixes for security bugs
 Patch247: php-5.3.3-CVE-2014-2497.patch
 Patch248: php-5.3.3-CVE-2014-3587.patch
-Patch249: php-5.3.3-CVE-2014-3597.patch
+Patch249: php-5.3.29-CVE-2014-3597.patch
 Patch250: php-5.3.3-CVE-2014-4698.patch
 Patch251: php-5.3.3-CVE-2014-4670.patch
 
