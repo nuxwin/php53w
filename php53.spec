@@ -40,7 +40,7 @@
 Summary: PHP scripting language for creating dynamic web sites
 Name: php
 Version: 5.3.29
-Release: 2%{?rcver:.%{rcver}}%{?dist}
+Release: 3%{?rcver:.%{rcver}}%{?dist}
 License: PHP
 Group: Development/Languages
 URL: http://www.php.net/
@@ -88,6 +88,10 @@ Patch248: php-5.3.3-CVE-2014-3587.patch
 Patch249: php-5.3.29-CVE-2014-3597.patch
 Patch250: php-5.3.3-CVE-2014-4698.patch
 Patch251: php-5.3.3-CVE-2014-4670.patch
+Patch252: php-5.3.3-CVE-2014-3668.patch
+Patch253: php-5.3.3-CVE-2014-3669.patch
+Patch254: php-5.3.3-CVE-2014-3670.patch
+Patch255: php-5.3.3-CVE-2014-3710.patch
 
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 
@@ -594,6 +598,10 @@ support for using the enchant library to PHP.
 %patch249 -p1 -b .cve3597
 %patch250 -p1 -b .cve4698
 %patch251 -p1 -b .cve4670
+%patch252 -p1 -b .cve3668
+%patch253 -p1 -b .cve3669
+%patch254 -p1 -b .cve3670
+%patch255 -p1 -b .cve3710
 
 # Prevent %%doc confusion over LICENSE files
 cp Zend/LICENSE Zend/ZEND_LICENSE
@@ -1144,6 +1152,12 @@ fi
 %endif
 
 %changelog
+* Sat Nov 01 2014 Andy Thompson <andy@webtatic.com> - 5.3.29-3
+- fileinfo: fix out-of-bounds read in elf note headers. CVE-2014-3710
+- xmlrpc: fix out-of-bounds read flaw in mkgmtime() CVE-2014-3668
+- core: fix integer overflow in unserialize() CVE-2014-3669
+- exif: fix heap corruption issue in exif_thumbnail() CVE-2014-3670
+
 * Sun Oct 12 2014 Andy Thompson <andy@webtatic.com> - 5.3.29-2
 - spl: fix use-after-free in ArrayIterator due to object
   change during sorting. CVE-2014-4698
