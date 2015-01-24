@@ -40,7 +40,7 @@
 Summary: PHP scripting language for creating dynamic web sites
 Name: php
 Version: 5.3.29
-Release: 3%{?rcver:.%{rcver}}%{?dist}
+Release: 4%{?rcver:.%{rcver}}%{?dist}
 License: PHP
 Group: Development/Languages
 URL: http://www.php.net/
@@ -92,6 +92,7 @@ Patch252: php-5.3.3-CVE-2014-3668.patch
 Patch253: php-5.3.3-CVE-2014-3669.patch
 Patch254: php-5.3.3-CVE-2014-3670.patch
 Patch255: php-5.3.3-CVE-2014-3710.patch
+Patch256: php-5.3.29-CVE-2014-8142.patch
 
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 
@@ -602,6 +603,7 @@ support for using the enchant library to PHP.
 %patch253 -p1 -b .cve3669
 %patch254 -p1 -b .cve3670
 %patch255 -p1 -b .cve3710
+%patch256 -p1 -b .cve8142
 
 # Prevent %%doc confusion over LICENSE files
 cp Zend/LICENSE Zend/ZEND_LICENSE
@@ -1152,6 +1154,9 @@ fi
 %endif
 
 %changelog
+* Sat Jan 24 2015 Andy Thompson <andy@webtatic.com> - 5.3.29-4
+- core: Use after free vulnerability in unserialize() CVE-2014-8142
+
 * Sat Nov 01 2014 Andy Thompson <andy@webtatic.com> - 5.3.29-3
 - fileinfo: fix out-of-bounds read in elf note headers. CVE-2014-3710
 - xmlrpc: fix out-of-bounds read flaw in mkgmtime() CVE-2014-3668
