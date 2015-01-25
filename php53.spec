@@ -94,6 +94,7 @@ Patch254: php-5.3.3-CVE-2014-3670.patch
 Patch255: php-5.3.3-CVE-2014-3710.patch
 Patch256: php-5.3.29-CVE-2014-8142.patch
 Patch257: php-5.3.29-CVE-2015-0231.patch
+Patch258: php-5.3.29-CVE-2015-0232.patch
 
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 
@@ -606,6 +607,7 @@ support for using the enchant library to PHP.
 %patch255 -p1 -b .cve3710
 %patch256 -p1 -b .cve8142
 %patch257 -p1 -b .cve0231
+%patch258 -p1 -b .cve0232
 
 # Prevent %%doc confusion over LICENSE files
 cp Zend/LICENSE Zend/ZEND_LICENSE
@@ -1157,9 +1159,10 @@ fi
 
 %changelog
 * Sat Jan 24 2015 Andy Thompson <andy@webtatic.com> - 5.3.29-4
-- core: Use after free vulnerability in unserialize() CVE-2014-8142
-- core: Use After Free Vulnerability in PHP's unserialize()
-  (Still Exploitable) CVE-2015-0231
+- core: fix use after free vulnerability in unserialize() CVE-2014-8142
+- core: fix use after free vulnerability in unserialize()
+  (was still exploitable) CVE-2015-0231
+- exif: fix free called on unitialized pointer CVE-2015-0232
 
 * Sat Nov 01 2014 Andy Thompson <andy@webtatic.com> - 5.3.29-3
 - fileinfo: fix out-of-bounds read in elf note headers. CVE-2014-3710
